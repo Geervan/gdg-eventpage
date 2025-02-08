@@ -56,8 +56,10 @@ function EventDetails() {
   };
 
   return (
+    
     <div className="event-details">
       <section ref={(el) => (sectionRefs.current[0] = el)} className="hero">
+      <div className='event-title-container'>
         <h1 className="event-title">
           <div className="title-animation">
             <div className="background-animation">
@@ -84,7 +86,13 @@ function EventDetails() {
             </span>
           </div>
         </h1>
-        <p className="event-tagline" ref={elementRef}>Innovate. Connect. Inspire.</p>
+        </div>
+        
+        <p className="event-tagline">
+        <span className="word1">Innovate. </span>
+        <span className="word2">Connect. </span>
+        <span className="word3">Inspire. </span>
+        </p>
       </section>
 
       <section ref={(el) => (sectionRefs.current[1] = el)} className="event-description">
@@ -127,7 +135,7 @@ function EventDetails() {
           </div>
         </div>
       </section>
-
+{/* 
       <section ref={(el) => (sectionRefs.current[3] = el)} className="event-info">
         <div className="info-card date-time">
           <h3>Mark Your Calendar</h3>
@@ -140,13 +148,10 @@ function EventDetails() {
           <p>Dehmi Kalan, Jaipur, Rajasthan</p>
         </div>
       </section>
-
-      <section ref={(el) => (sectionRefs.current[4] = el)} className="cta-section">
-        <h2>Be Part of the Future</h2>
-        <p>Secure your spot at the most anticipated tech event of the year!</p>
-        <button className="register-button">Register Now</button>
-      </section>
+ */}
+      
       <h2 className='gallery-heading'>Event Gallery</h2>
+      <div className='container'>
       <section className="image-gallery">
         
         <div className="gallery-container">
@@ -172,6 +177,12 @@ function EventDetails() {
           </button>
         </div>
       </section>
+      <section ref={(el) => (sectionRefs.current[4] = el)} className="cta-section">
+        <h2>Be Part of the Future</h2>
+        <p>Secure your spot at the most anticipated tech event of the year!</p>
+        <button className="register-button">Register Now</button>
+      </section>
+      </div>
     </div>
   );
 }

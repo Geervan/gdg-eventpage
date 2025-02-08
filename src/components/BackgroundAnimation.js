@@ -1,4 +1,4 @@
-import "../styles/BackgroundAnimation.css"
+//import "../styles/BackgroundAnimation.css"
 
 function BackgroundAnimation() {
   return (
