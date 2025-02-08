@@ -8,11 +8,7 @@ function Header() {
     <header className="header">
       <div className="header-content">
         <img src="/gdg_muj.png" alt="GDG Logo" className="logo" />
-        <button className="menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        
         <nav className={`nav ${isMenuOpen ? "open" : ""}`}>
           <ul>
             <li>
