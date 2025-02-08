@@ -4,6 +4,24 @@
     padding: 2rem;
     font-family: 'Open Sans',serif;
   }
+  .typewriter-wrapper {
+    display: inline-block; /* Ensure it takes only the necessary width */
+    position: relative; /* For positioning the cursor */
+    /* Add a fixed width or max-width if you know the maximum text width */
+    /* width: 400px;  OR */
+    /* max-width: 100%; */
+}
+
+.typewriter-wrapper .Typewriter {
+    display: inline-block; /* Key for correct width calculation */
+}
+
+.typewriter-wrapper .Typewriter__cursor {
+    /* Style the cursor to minimize layout shift */
+    animation: none; /* Disable default cursor animation if it causes shift */
+    /* OR */
+    /* Use a fixed-width cursor if the library allows it */
+}
   
   .hero {
     text-align: center;
@@ -17,6 +35,8 @@
     border-radius: 12px;
     box-shadow:  inset 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;  
+    flex-direction: column;
+
     justify-content: center;
     align-items: center;
     letter-spacing: 2px;
@@ -47,6 +67,19 @@
     z-index: -1; /* Place behind the content */
 }
 
+.event-title-container h1 span { 
+    font-family: "Courier New", monospace; 
+    font-weight: 600; 
+    font-size: 4rem; 
+    color: #333; 
+    display: inline-block; 
+}
+
+@media (max-width: 768px) {
+    .event-title-container h1 span {
+        font-size: 2rem; /* Adjust font size for mobile if needed */
+    }
+}
   
 
   
@@ -56,7 +89,8 @@
     font-size: 2rem;
     color: black;
     font-weight:bold;
-    /* animation: fadeInUp 1s ease 0.2s both; */
+     animation: fadeInUp 1s ease 0.2s both; 
+     margin-bottom: 0;
   }
 
   .word1{
@@ -76,7 +110,8 @@
   .event-highlights,
   .event-info,
   .cta-section {
-    margin-bottom: 4rem;
+    margin-top: 0;
+    margin-bottom: 6rem;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.5s ease, transform 0.5s ease;
