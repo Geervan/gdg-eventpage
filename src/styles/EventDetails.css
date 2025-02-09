@@ -123,10 +123,31 @@
 
   .event-highlights h2{
      font-size: 2.5rem; 
-    animation: glowingRed 4s ease-in-out infinite alternate;
-   
+     padding-bottom: 10px;
+    
     color: #ea4335;
   }
+  .event-highlights {
+    position: relative; /* Needed for absolute positioning of the underline */
+    overflow: hidden; /* Prevents the scaleX transform from overflowing */
+}
+
+.event-highlights > h2 { /* Target the h2 specifically */
+    position: relative; /* Needed for positioning the underline relative to the h2 */
+    /* Add any other h2 styles here, e.g., padding-bottom */
+    padding-bottom: 10px; /* Example: Add some space below the h2 */
+}
+
+.underline {
+  
+    position: absolute;
+    bottom: -5px; /* Adjust position as needed */
+    left: 0;
+    width: 100%;
+    height: 3px; /* Adjust thickness as needed */
+    background-color: #f0ad4e; /* Or your preferred color */
+    transform-origin: left; /* Makes the underline animation grow from left to right */
+}
   @keyframes glowingRed {
     0% {
         text-shadow: 0 0 5px rgba(255, 105, 97, 0.4); /* Lighter, more transparent red */
@@ -266,6 +287,7 @@
     margin-top: 2rem;
     text-transform: uppercase;
     letter-spacing: 2px;
+    text-decoration: none; 
     
   }
   
@@ -285,11 +307,7 @@
     font-size: 2.5rem;
     font-weight: 700;
     color: #34a853;
-    animation: glowingGreen 4s ease-in-out infinite alternate;
-   
-    
-
-  }
+   }
   @keyframes glowingGreen {
     0% {
         text-shadow: 0 0 5px rgba(100, 200, 100, 0.3); /* Lighter green, more transparent */
@@ -309,8 +327,7 @@
     position: relative;
     overflow: hidden; 
   }*/
-
-.gallery-container {
+  .gallery-container {
     width: 100%;
     /* Remove any fixed height or max-height here */
     border-radius: 8px;
@@ -384,32 +401,40 @@
 
     position: relative;
     overflow: visible;
-    padding: 30px;
+     padding: 30px; 
 }
 
 .gallery-container {
-  width: 100%; /* Or a specific width if needed */
-  /*height: 300px; /* Set your desired height */
-  overflow: hidden; /* Essential to prevent overflow */
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+    height: 300px; /* Set a FIXED height for the gallery */
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    
 }
 
 .gallery-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
+    height: 100%;
 }
 
 .gallery-item {
-    flex: 0 0 100%;
+  flex: 0 0 100%;
+  height: 100%; /* Make each item fill container height */
+  display: flex; /* Use flexbox for vertical centering within item */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
 }
 
 .gallery-item img {
-  width: 100%;
-  height: 100%; /* Fill the container's height */
+  max-width: 100%;
+  max-height: 100%; /* Fill the container's height */
   display: block;
-  object-fit: cover; /* Fill the container, cropping if necessary */
+  object-fit: contain; /* Fill the container, cropping if necessary */
   border-radius: 8px;
+  
 }
 
 .gallery-controls {
@@ -441,15 +466,6 @@
 .gallery-controls button i {
     font-size: 16px; /* Slightly smaller icons */
 }
-  @keyframes glow {
-    from {
-      text-shadow: 0 0 5px #ea4335, 0 0 5px #ea4335, 0 0 5px #ea4335;
-    }
-    to {
-      text-shadow: 0 0 6px #34a853, 0 0 6px #34a853, 0 0 6px #34a853;
-    }
-  }
-  
   @keyframes rotate {
     from {
       transform: rotate(0deg);

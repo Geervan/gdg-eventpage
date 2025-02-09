@@ -1,28 +1,39 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import '../styles/EventDetails.css';
 import Typewriter from 'react-typewriter-effect';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { motion, useAnimation } from 'framer-motion';
 
 function EventDetails() {
     const sectionRefs = useRef([]);
     const imageUrls = [
-        "/stock.png",
-        "image2.jpg",
-        "image3.jpg",
+        "/winner.jpg",
+        "/2.jpg",
+        "/3.jpg",
+        "/4.jpg",
+        "/5.jpg",
+        "/6.jpg",
+        "/7.jpg",
+        "/team.jpg"
+
     ];
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const timeoutRef = useRef(null);
     const [isMobile, setIsMobile] = useState(false);
     const typewriterRef = useRef(null);
+    const controls = useAnimation();
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add("animate");
+                        if (entry.target.classList.contains("event-highlights")) {
+                            controls.start("visible");
+                        }
                     }
                 });
             },
@@ -76,6 +87,11 @@ function EventDetails() {
             typewriterWrapper.style.width = typewriter.offsetWidth + 'px';
         }
     }, []);
+
+    const underlineVariants = {
+        hidden: { scaleX: 0 },
+        visible: { scaleX: 1, transition: { duration: 0.5, ease: "easeInOut" } }
+    };
 
     return (
         <div className="event-details">
@@ -135,11 +151,17 @@ function EventDetails() {
                     <br />
                     <strong>Lets get you on board! 🚀</strong>
                 </p>
-                
+
             </section>
 
             <section ref={(el) => (sectionRefs.current[2] = el)} className="event-highlights">
                 <h2>Event Highlights</h2>
+                <motion.div
+                    className="underline"
+                    variants={underlineVariants}
+                    initial="hidden"
+                    animate={controls}
+                />
                 <div className="highlights-grid">
                     <div className="highlight-item">
                         <i className="fas fa-rocket"></i>
@@ -194,7 +216,10 @@ function EventDetails() {
                 <section ref={(el) => (sectionRefs.current[4] = el)} className="cta-section">
                     <h2>Be Part of the Future</h2>
                     <p>Secure your spot at the most anticipated tech event of the year!</p>
-                    <button className="register-button">Register Now</button>
+                    <a href="https://lu.ma/hackmuj" className="register-button">Register Now</a>
+
+                    <p>Event Date: 16th November 2024</p>
+                    <p>Registration: Free</p>
                 </section>
             </div>
         </div>
