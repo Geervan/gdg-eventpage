@@ -216,7 +216,9 @@ function EventDetails() {
                 <section ref={(el) => (sectionRefs.current[4] = el)} className="cta-section">
                     <h2>Be Part of the Future</h2>
                     <p>Secure your spot at the most anticipated tech event of the year!</p>
-                    <a href="https://lu.ma/hackmuj" className="register-button">Register Now</a>
+                      <a href="https://lu.ma/hackmuj" class="register-button" target="_blank" rel="noopener noreferrer">
+    Register Now
+</a>
 
                     <p>Event Date: 16th November 2024</p>
                     <p>Registration: Free</p>
